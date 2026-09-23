@@ -13,7 +13,9 @@ public class Inventory {
     @Id
     private String productId;
 
-    private int quantity;
+    private int availableQuantity;
+
+    private int reservedQuantity;
 
     @Version
     private long version;
@@ -23,18 +25,46 @@ public class Inventory {
 
     public Inventory(String productId) {
         this.productId = productId;
-        this.quantity = 0;
+        this.availableQuantity = 0;
     }
 
     public void apply(MovementType type, int amount) {
-        var nextQuantity = type == MovementType.IN ? quantity + amount : quantity - amount;
+        var nextQuantity = type == MovementType.IN ? availableQuantity + amount : availableQuantity - amount;
         if (nextQuantity < 0) {
-            throw new InsufficientStockException(productId, quantity, amount);
+            throw new InsufficientStockException(productId, availableQuantity, amount);
         }
-        quantity = nextQuantity;
+        availableQuantity = nextQuantity;
+    }
+    public boolean hasAvailable(int requestedQuantity) {
+        return requestedQuantity > 0
+                && availableQuantity >= requestedQuantity;
+    }
+
+    public void reserve(int requestedQuantity) {
+        if (!hasAvailable(requestedQuantity)) {
+            throw new InsufficientStockException(
+                    productId,
+                    availableQuantity,
+                    requestedQuantity
+            );
+        }
+
+        availableQuantity -= requestedQuantity;
+        reservedQuantity += requestedQuantity;
+    }
+
+    public void release(int quantity) {
+        if (quantity <= 0 || quantity > reservedQuantity) {
+            throw new IllegalArgumentException(
+                    "Cantidad reservada no válida"
+            );
+        }
+
+        reservedQuantity -= quantity;
+        quantity += quantity;
     }
 
     public String getProductId() { return productId; }
-    public int getQuantity() { return quantity; }
+    public int getAvailableQuantity() { return availableQuantity; }
     public long getVersion() { return version; }
 }

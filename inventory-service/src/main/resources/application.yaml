@@ -22,7 +22,7 @@ spring:
       properties:
         spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
         spring.json.value.default.type: com.migueljuncalp.eventcontracts.inventory.v1.StockMovementEventV1
-        spring.json.trusted.packages: com.migueljuncalp.eventcontracts.inventory.v1
+        spring.json.trusted.packages: com.migueljuncalp.eventcontracts.*
     listener:
       ack-mode: record
 

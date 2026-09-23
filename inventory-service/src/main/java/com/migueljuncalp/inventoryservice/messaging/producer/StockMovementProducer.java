@@ -1,7 +1,8 @@
-package com.migueljuncalp.inventoryservice.messaging;
+package com.migueljuncalp.inventoryservice.messaging.producer;
 
 import com.migueljuncalp.eventcontracts.inventory.v1.StockMovementEventV1;
 import com.migueljuncalp.inventoryservice.config.KafkaConfig;
+import com.migueljuncalp.inventoryservice.messaging.EventPublicationException;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,8 @@
-package com.migueljuncalp.orderservice.messaging;
+package com.migueljuncalp.orderservice.messaging.producer;
 
 import com.migueljuncalp.eventcontracts.orders.v1.StockOrderEventV1;
 import com.migueljuncalp.orderservice.config.KafkaConfig;
+import com.migueljuncalp.orderservice.messaging.EventPublicationException;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

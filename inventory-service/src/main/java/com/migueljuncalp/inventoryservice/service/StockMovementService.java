@@ -6,7 +6,7 @@ import com.migueljuncalp.inventoryservice.api.ResourceNotFoundException;
 import com.migueljuncalp.inventoryservice.api.StockMovementResponse;
 import com.migueljuncalp.inventoryservice.domain.MovementStatus;
 import com.migueljuncalp.inventoryservice.domain.StockMovement;
-import com.migueljuncalp.inventoryservice.messaging.StockMovementProducer;
+import com.migueljuncalp.inventoryservice.messaging.producer.StockMovementProducer;
 import com.migueljuncalp.inventoryservice.repository.StockMovementRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

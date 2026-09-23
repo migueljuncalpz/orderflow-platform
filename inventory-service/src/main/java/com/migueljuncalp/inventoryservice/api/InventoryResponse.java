@@ -7,6 +7,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public record InventoryResponse(String productId, int quantity, long version) {
 
     public static InventoryResponse from(Inventory inventory) {
-        return new InventoryResponse(inventory.getProductId(), inventory.getQuantity(), inventory.getVersion());
+        return new InventoryResponse(inventory.getProductId(), inventory.getAvailableQuantity(), inventory.getVersion());
     }
 }

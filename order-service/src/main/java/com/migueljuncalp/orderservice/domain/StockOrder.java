@@ -42,4 +42,20 @@ public class StockOrder {
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
+
+    public void confirm() {
+        if (orderStatus != OrderStatus.PENDING) {
+            return; // idempotencia ante eventos duplicados
+        }
+
+        orderStatus = OrderStatus.CONFIRMED;
+    }
+
+    public void reject() {
+        if (orderStatus != OrderStatus.PENDING) {
+            return;
+        }
+
+        orderStatus = OrderStatus.REJECTED;
+    }
 }

@@ -7,7 +7,7 @@ import com.migueljuncalp.orderservice.api.ResourceNotFoundException;
 import com.migueljuncalp.orderservice.api.StockOrderResponse;
 import com.migueljuncalp.orderservice.domain.StockOrder;
 import com.migueljuncalp.orderservice.mapper.OrderMapper;
-import com.migueljuncalp.orderservice.messaging.StockOrderProducer;
+import com.migueljuncalp.orderservice.messaging.producer.StockOrderProducer;
 import com.migueljuncalp.orderservice.repository.StockOrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,6 @@ public class StockMovementService {
     @Transactional
     public StockOrderResponse create(CreateOrderRequest request) {
         UUID eventId = UUID.randomUUID();
-        UUID orderId = UUID.randomUUID();
         Instant now = clock.instant();
         StockOrder order = orderMapper.toEntity(request);
         List<OrderItemEventV1> eventItems = order.getItems().stream()
@@ -47,7 +46,7 @@ public class StockMovementService {
                 ))
                 .toList();
         repository.save(order);
-        producer.publish(new StockOrderEventV1(eventId,orderId,eventItems, now));
+        producer.publish(new StockOrderEventV1(eventId,order.getOrderId(),eventItems, now));
         return StockOrderResponse.from(order);
     }
 
