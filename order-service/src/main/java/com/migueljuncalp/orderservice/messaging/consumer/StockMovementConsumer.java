@@ -4,7 +4,7 @@ import com.migueljuncalp.eventcontracts.orders.v1.StockOrderEventV1;
 import com.migueljuncalp.orderservice.config.KafkaConfig;
 import com.migueljuncalp.orderservice.config.InventoryProperties;
 import com.migueljuncalp.orderservice.service.ProcessingInterruptedException;
-import com.migueljuncalp.orderservice.service.StockMovementProcessor;
+import com.migueljuncalp.orderservice.service.StockOrderProcessor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class StockMovementConsumer {
 
 
-    private final StockMovementProcessor processor;
+    private final StockOrderProcessor processor;
     private final InventoryProperties properties;
 
-    public StockMovementConsumer(StockMovementProcessor processor, InventoryProperties properties) {
+    public StockMovementConsumer(StockOrderProcessor processor, InventoryProperties properties) {
         this.processor = processor;
         this.properties = properties;
     }

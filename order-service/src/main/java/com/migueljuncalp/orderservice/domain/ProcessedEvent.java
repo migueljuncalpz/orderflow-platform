@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "processed_events")
+@Table(name = "processed_event")
 public class ProcessedEvent {
 
     @Id

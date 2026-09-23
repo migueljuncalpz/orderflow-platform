@@ -1,7 +1,7 @@
 package com.migueljuncalp.orderservice.api;
 
 import com.migueljuncalp.orderservice.repository.StockOrderRepository;
-import com.migueljuncalp.orderservice.service.StockMovementService;
+import com.migueljuncalp.orderservice.service.StockOrderService;
 import jakarta.validation.Valid;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -23,10 +23,10 @@ import java.util.UUID;
 @Tag(name = "Orders", description = "Reserva de existencia y pedidos")
 public class OrdersController {
 
-    private final StockMovementService movementService;
+    private final StockOrderService movementService;
     private final StockOrderRepository stockOrderRepository;
 
-    public OrdersController(StockMovementService movementService, StockOrderRepository stockOrderRepository) {
+    public OrdersController(StockOrderService movementService, StockOrderRepository stockOrderRepository) {
         this.movementService = movementService;
         this.stockOrderRepository = stockOrderRepository;
     }

@@ -16,7 +16,7 @@ public class StockOrder {
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
-            name = "stock_order_items",
+            name = "stock_order_item",
             joinColumns = @JoinColumn(name = "order_id")
     )
     private List<Item> items = new ArrayList<>();

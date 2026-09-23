@@ -18,7 +18,7 @@ public record StockMovementResponse(
         MovementStatus status
 ) {
     public static StockMovementResponse from(StockMovement movement) {
-        return new StockMovementResponse(movement.getId(), movement.getProductId(), movement.getType(),
-                movement.getQuantity(), movement.getCreatedAt(), movement.getStatus());
+        return new StockMovementResponse(movement.getMovementId(), movement.getProductId(), movement.getMovementType(),
+                movement.getQuantity(), movement.getCreatedAt(), movement.getMovementStatus());
     }
 }

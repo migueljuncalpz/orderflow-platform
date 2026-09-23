@@ -11,41 +11,41 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "stock_movements")
+@Table(name = "stock_movement")
 public class StockMovement {
 
     @Id
-    private UUID id;
+    private UUID movementId;
 
     private String productId;
 
     @Enumerated(EnumType.STRING)
-    private MovementType type;
+    private MovementType movementType;
 
     private int quantity;
 
     private Instant createdAt;
 
     @Enumerated(EnumType.STRING)
-    private MovementStatus status;
+    private MovementStatus movementStatus;
 
     protected StockMovement() {
     }
 
     public StockMovement(UUID id, String productId, MovementType type, int quantity,
                          Instant createdAt, MovementStatus status) {
-        this.id = id;
+        this.movementId = id;
         this.productId = productId;
-        this.type = type;
+        this.movementType = type;
         this.quantity = quantity;
         this.createdAt = createdAt;
-        this.status = status;
+        this.movementStatus = status;
     }
 
-    public UUID getId() { return id; }
+    public UUID getMovementId() { return movementId; }
     public String getProductId() { return productId; }
-    public MovementType getType() { return type; }
+    public MovementType getMovementType() { return movementType; }
     public int getQuantity() { return quantity; }
     public Instant getCreatedAt() { return createdAt; }
-    public MovementStatus getStatus() { return status; }
+    public MovementStatus getMovementStatus() { return movementStatus; }
 }

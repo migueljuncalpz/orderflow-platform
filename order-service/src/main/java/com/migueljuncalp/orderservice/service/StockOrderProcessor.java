@@ -11,16 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Clock;
 
 @Service
-public class StockMovementProcessor {
+public class StockOrderProcessor {
 
     private final StockOrderRepository orderRepository;
     private final ProcessedEventRepository processedEventRepository;
     private final Clock clock;
     private final StockOrderEventV1Mapper stockOrderEventMapper;
 
-    public StockMovementProcessor(StockOrderRepository orderRepository,
-                                  ProcessedEventRepository processedEventRepository,
-                                  Clock clock, StockOrderEventV1Mapper stockOrderEventMapper) {
+    public StockOrderProcessor(StockOrderRepository orderRepository,
+                               ProcessedEventRepository processedEventRepository,
+                               Clock clock, StockOrderEventV1Mapper stockOrderEventMapper) {
         this.orderRepository = orderRepository;
         this.processedEventRepository = processedEventRepository;
         this.clock = clock;

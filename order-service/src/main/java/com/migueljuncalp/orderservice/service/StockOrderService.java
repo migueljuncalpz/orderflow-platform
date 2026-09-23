@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class StockMovementService {
+public class StockOrderService {
 
     private final StockOrderRepository repository;
     private final StockOrderProducer producer;
@@ -26,8 +26,8 @@ public class StockMovementService {
     private final OrderMapper orderMapper;
 
 
-    public StockMovementService(StockOrderRepository repository, StockOrderProducer producer, Clock clock,
-                                OrderMapper mapper) {
+    public StockOrderService(StockOrderRepository repository, StockOrderProducer producer, Clock clock,
+                             OrderMapper mapper) {
         this.repository = repository;
         this.producer = producer;
         this.clock = clock;

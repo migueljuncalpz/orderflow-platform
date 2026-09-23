@@ -2,8 +2,10 @@ package com.migueljuncalp.orderservice.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Table;
 
 @Embeddable
+@Table(name = "stock_order_item")
 public class Item {
 
     @Column(name = "product_id", nullable = false)
